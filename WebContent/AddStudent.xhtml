@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+
+
+<h:head>
+<h:outputStylesheet name="css/styles.css"></h:outputStylesheet>
+<title>College DB - Add Student</title>
+</h:head>
+
+<h:body>
+
+	<h:messages globalOnly="true" styleClass="error"></h:messages>
+
+	<h3>Add Student</h3>
+	
+	<br />
+	
+	<h:form>
+		Student ID: <h:inputText style="margin-left: 10px;"  value="#{studentController.studentId}" id="sid" p:placeholder="Enter Student ID" required="true" requiredMessage="Student ID is Mandatory"></h:inputText>
+		
+		<h:message style="margin-left: 10px;" styleClass="error" for="sid"/>
+		
+		<br /><br />
+		
+		Name: <h:inputText style="margin-left: 25px;" value="#{studentController.studentName}" id="name" p:placeholder="Enter Student Name" required="true" requiredMessage="Name is Mandatory"></h:inputText>
+		
+		<h:message style="margin-left: 10px;" styleClass="error" for="name"></h:message>
+		
+		<br /><br />
+		
+		Address: <h:inputText style="margin-left: 10px;" value="#{studentController.studentAddress}" p:placeholder="Enter Address"></h:inputText>
+		
+		
+		<br /><br />
+		
+		Course ID: <h:inputText style="margin-left: 10px;" value="#{studentController.courseId}" id="cid" p:placeholder="Enter Course ID" required="true" requiredMessage="Course ID is Mandatory"></h:inputText>
+		
+		<h:message style="margin-left: 10px;" styleClass="error" for="cid"></h:message>
+	
+		
+		<br /><br />
+		
+		
+		<h:commandButton value="Add" action="#{studentController.addStudent()}"></h:commandButton>
+		
+	</h:form>
+	
+	<br />
+	
+	<h:outputLink value="index.xhtml" style="margin-right: 10px;">
+		Home
+	</h:outputLink>
+	
+	<h:outputLink value="ManageStudents.xhtml">
+		Students
+	</h:outputLink>
+	
+</h:body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://wwww.w3.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+	  xmlns:c="http://java.sun.com/jsf/core">
+	  
+<f:metadata>
+  <f:event type="preRenderView" 
+      listener="#{courseController.loadCourses()}"/>
+</f:metadata>
+
+<h:head>
+<h:outputStylesheet name="css/styles.css"></h:outputStylesheet>
+<h:outputStylesheet name="css/tables.css"></h:outputStylesheet>
+<title>College DB - Manage Courses</title>
+</h:head>
+
+<h:body>
+
+	<h:messages globalOnly="true" styleClass="error"></h:messages>
+	
+	<br />
+
+	<h:form>
+		<h:commandButton styleClass="addbutton" value="Add Course" action="AddCourse">
+		</h:commandButton>
+	</h:form>
+	
+	<br />
+	
+	<h:form>
+		<h:dataTable value="#{courseController.getCourses()}" var="course" styleClass="table" headerClass="table-header" rowClasses="table-odd-row, table-even-row">
+			<h:column>
+				<c:facet name="header">Course ID</c:facet>
+				#{course.courseId}
+			</h:column>
+			
+			<h:column>
+				<c:facet name="header">Course Name</c:facet>
+				#{course.courseName}
+			</h:column>
+			
+			<h:column>
+				<c:facet name="header">Course Duration</c:facet>
+				#{course.courseDuration}
+			</h:column>
+			
+			<h:column>
+				<c:facet name="header">Action</c:facet>
+				<h:commandLink action="#{courseController.getStudentDetails(course.courseId)}">
+					Show Students
+				</h:commandLink>
+				
+				<h:commandLink action="#{courseController.setDeleteCourse(course.courseId)}">
+					Delete
+				</h:commandLink>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+	
+	<br />
+	
+	<h:outputLink value="index.xhtml">
+		Home
+	</h:outputLink>
+
+</h:body>
+</html>

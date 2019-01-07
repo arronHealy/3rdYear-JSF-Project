@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html xmlns="http://wwww.w3.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+	  xmlns:c="http://java.sun.com/jsf/core">
+
+
+<f:metadata>
+  <f:event type="preRenderView" 
+      listener="#{courseController.loadStudentDetails()}"/>
+</f:metadata>
+
+<h:head>
+<h:outputStylesheet name="css/styles.css"></h:outputStylesheet>
+<h:outputStylesheet name="css/tables.css"></h:outputStylesheet>
+<title>College DB - Course Student Details</title>
+</h:head>
+
+<h:body>
+
+	<h3>Course Student Details</h3>
+	
+	<br />
+	
+	<h:form>
+		<h:dataTable value="#{courseController.studentCourseDetails()}" var="student" styleClass="table" headerClass="table-header" rowClasses="table-odd-row, table-even-row">
+			<h:column>
+				<c:facet name="header">Course ID</c:facet>
+				#{student.courseId}
+			</h:column>
+			
+			<h:column>
+				<c:facet name="header">Course Name</c:facet>
+				#{student.courseName}
+			</h:column>
+			
+			<h:column>
+				<c:facet name="header">Course Duration</c:facet>
+				#{student.courseDuration}
+			</h:column>
+			
+			<h:column>
+				<c:facet name="header">Student Name</c:facet>
+				#{student.studentName}
+			</h:column>
+			
+			<h:column>
+				<c:facet name="header">Student Address</c:facet>
+				#{student.studentAddress}
+			</h:column>
+	
+	</h:dataTable>
+	</h:form>
+	
+	<br /><br />
+	
+	<h:outputLink value="index.xhtml" style="margin-right: 5px;">
+		Home
+	</h:outputLink>
+	
+	<h:outputLink value="ManageCourses.xhtml">
+		Courses
+	</h:outputLink>
+	
+</h:body>
+</html>
